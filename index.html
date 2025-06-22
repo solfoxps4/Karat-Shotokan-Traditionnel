@@ -13,9 +13,12 @@
     body {
       margin: 0; padding: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #0b0b0b;
-      color: #f5f5f5;
+      background: linear-gradient(135deg, #0b0b0b 0%, #1f1f1f 100%);
+      color: #ddd;
       line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     a {
       color: #c0392b;
@@ -42,6 +45,7 @@
       text-align: center;
       padding: 0 1rem;
       position: relative;
+      flex-shrink: 0;
     }
     header::before {
       content: '';
@@ -80,17 +84,20 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       user-select: none;
+      text-decoration: none;
+      display: inline-block;
     }
     .btn:hover {
       background-color: #e74c3c;
       box-shadow: 0 6px 20px rgba(231, 76, 60, 0.8);
     }
 
-    /* Sections */
+    /* Main content */
     main {
       max-width: 900px;
       margin: 2rem auto 4rem;
       padding: 0 1rem;
+      flex-grow: 1;
     }
     section {
       margin-bottom: 3rem;
@@ -113,14 +120,12 @@
       text-align: center;
       color: #ddd;
     }
-
     .sensei-content {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
     }
-
     .sensei img {
       width: 200px;
       height: 200px;
@@ -129,12 +134,10 @@
       border: 3px solid #d4af37;
       box-shadow: 0 0 15px #d4af37aa;
     }
-
     .sensei p {
       font-size: 1.1rem;
       max-width: 600px;
     }
-
     @media (min-width: 768px) {
       .sensei-content {
         flex-direction: row;
@@ -210,14 +213,58 @@
       margin-top: 1rem;
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: #111;
-      color: #777;
-      font-size: 0.9rem;
+    /* Flyer / Carte de visite */
+    .flyer {
+      background: linear-gradient(135deg, #0b0b0b 0%, #1f1f1f 100%);
+      border: 2px solid #d4af37;
+      border-radius: 12px;
+      box-shadow: 0 0 20px #d4af37aa;
+      padding: 2.5rem 2rem;
+      color: #ddd;
+      max-width: 900px;
+      margin: 3rem auto;
+      font-family: 'Roboto', sans-serif;
     }
+    .flyer h2 {
+      color: #d4af37;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+    .flyer p {
+      margin-bottom: 1rem;
+    }
+    .flyer p.italic-red {
+      font-style: italic;
+      color: #c0392b;
+      margin-bottom: 1.5rem;
+    }
+    .flyer ul {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 1.5rem;
+      color: #ccc;
+      font-weight: 600;
+    }
+    .flyer ul li {
+      margin-bottom: 0.3rem;
+    }
+    .flyer strong {
+      font-weight: 600;
+    }
+    .flyer p.contact-title {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+    .flyer p.footer-text {
+      font-style: italic;
+      text-align: center;
+      color: #d4af37;
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+    }
+
   </style>
 </head>
 <body>
@@ -270,6 +317,38 @@
       <p>Adresse : [Adresse du dojo]</p>
       <div class="map-placeholder">Carte Google Maps (à venir)</div>
     </section>
+
+    <section class="flyer" aria-label="Flyer et carte de visite">
+      <h2>Kenshin Shotokan Karate</h2>
+
+      <p><strong>Fondé par Ahmed Maaraki</strong><br>
+      7e dan Karaté Shotokan ・ 1er dan Judo<br>
+      Ancien sélectionneur national marocain
+      </p>
+
+      <p class="italic-red">
+        Discipline – Respect – Maîtrise de soi<br>
+        Un dojo où chaque mouvement forge le corps et l’esprit.
+      </p>
+
+      <p><strong>🔥 Disciplines enseignées :</strong></p>
+      <ul>
+        <li>Karaté Shotokan</li>
+        <li>Judo</li>
+        <li>Aïkido</li>
+        <li>Jiu-Jitsu Brésilien</li>
+      </ul>
+
+      <p class="contact-title">🧭 Adresse :</p>
+      <p>3, rue Abou Oubaida – Quartier Verdun, Casablanca</p>
+
+      <p class="contact-title">📞 Contact :</p>
+      <p>📱 06 70 74 58 40<br>✉️ ahmedmaaraki@yahoo.fr</p>
+
+      <p class="footer-text">
+        Rejoignez-nous et découvrez la voie du guerrier dans un cadre rigoureux, respectueux et inspiré de la tradition japonaise.
+      </p>
+    </section>
   </main>
 
   <footer>
@@ -277,4 +356,5 @@
   </footer>
 </body>
 </html>
+
 
