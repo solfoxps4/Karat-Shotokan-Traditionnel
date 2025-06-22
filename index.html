@@ -2,61 +2,279 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kenshin Karate</title>
-  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0b0b0b;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+    a {
+      color: #c0392b;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: #e74c3c;
+    }
+    h1, h2 {
+      font-weight: 700;
+      color: #d4af37;
+      margin-bottom: 0.5em;
+    }
+
+    /* Header (hero) */
+    header {
+      background: url('https://images.unsplash.com/photo-1590080877777-2ddf2bb2ce35?auto=format&fit=crop&w=1400&q=80') center center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0,0,0,0.6);
+      z-index: 0;
+    }
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.1em;
+      text-shadow: 0 0 10px #d4af37;
+    }
+    header p {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      font-style: italic;
+      text-shadow: 0 0 8px #c0392b;
+    }
+    .btn {
+      background-color: #c0392b;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 4px 12px rgba(192, 57, 43, 0.6);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      user-select: none;
+    }
+    .btn:hover {
+      background-color: #e74c3c;
+      box-shadow: 0 6px 20px rgba(231, 76, 60, 0.8);
+    }
+
+    /* Sections */
+    main {
+      max-width: 900px;
+      margin: 2rem auto 4rem;
+      padding: 0 1rem;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+    section h2 {
+      border-bottom: 3px solid #d4af37;
+      padding-bottom: 0.3em;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    /* Sensei */
+    .sensei {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      text-align: center;
+      color: #ddd;
+    }
+
+    .sensei-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .sensei img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #d4af37;
+      box-shadow: 0 0 15px #d4af37aa;
+    }
+
+    .sensei p {
+      font-size: 1.1rem;
+      max-width: 600px;
+    }
+
+    @media (min-width: 768px) {
+      .sensei-content {
+        flex-direction: row;
+        text-align: left;
+      }
+      .sensei p {
+        margin-left: 1.5rem;
+      }
+    }
+
+    /* Disciplines */
+    ul.disciplines {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      font-weight: 600;
+      color: #ccc;
+    }
+    ul.disciplines li {
+      background: #1a1a1a;
+      padding: 0.75rem 1.5rem;
+      border-radius: 40px;
+      box-shadow: 0 0 6px #c0392b;
+      transition: background-color 0.3s ease;
+      cursor: default;
+    }
+    ul.disciplines li:hover {
+      background-color: #c0392b;
+      color: white;
+      box-shadow: 0 0 12px #e74c3c;
+    }
+
+    /* Schedule */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #ddd;
+      box-shadow: 0 0 10px #d4af37aa;
+      border-radius: 8px;
+      overflow: hidden;
+      font-size: 1rem;
+    }
+    th, td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid #d4af37;
+      text-align: center;
+    }
+    th {
+      background-color: #1a1a1a;
+    }
+
+    /* Contact */
+    .contact p {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .map-placeholder {
+      width: 100%;
+      height: 300px;
+      background-color: #222;
+      border: 2px solid #d4af37;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-style: italic;
+      user-select: none;
+      margin-top: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: #111;
+      color: #777;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Kenshin Karate</h1>
     <p>Discipline. Tradition. Excellence.</p>
-    <a href="#">Rejoindre le dojo</a>
+    <a href="#" class="btn">Rejoindre le dojo</a>
   </header>
 
-  <section class="sensei-section">
-    <h2>À propos du Sensei</h2>
-    <div class="sensei">
-      <img src="karate.jpg" alt="Sensei Ahmed Maraki">
-      <p>Ahmed Maraki, 6e dan karaté, 1er dan judo — Ancien sélectionneur national avec plus de 30 ans d’expérience dans les arts martiaux traditionnels.</p>
-    </div>
-  </section>
+  <main>
+    <section class="sensei" aria-label="À propos du Sensei">
+      <h2>À propos du Sensei</h2>
+      <div class="sensei-content">
+        <img src="karate.jpg" alt="Portrait de Ahmed Maaraki" />
+        <p>
+          Ahmed Maaraki, 7e dan karaté, 1er dan judo — Ancien sélectionneur national avec plus de 40 ans d’expérience dans les arts martiaux traditionnels.
+        </p>
+      </div>
+    </section>
 
-  <section>
-    <h2>Disciplines enseignées</h2>
-    <ul class="disciplines">
-      <li>Karaté (Shotokan)</li>
-      <li>Judo</li>
-      <li>Aïkido</li>
-      <li>Jiu-Jitsu Brésilien</li>
-    </ul>
-  </section>
+    <section aria-label="Disciplines enseignées">
+      <h2>Disciplines enseignées</h2>
+      <ul class="disciplines">
+        <li>Karaté (Shotokan)</li>
+        <li>Judo</li>
+        <li>Aïkido</li>
+        <li>Jiu-Jitsu Brésilien</li>
+      </ul>
+    </section>
 
-  <section>
-    <h2>Horaires des cours</h2>
-    <table>
-      <thead>
-        <tr><th>Jour</th><th>Horaire</th><th>Discipline</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Lundi</td><td>18h - 20h</td><td>Karaté</td></tr>
-        <tr><td>Mardi</td><td>18h - 19h30</td><td>Judo</td></tr>
-        <tr><td>Mercredi</td><td>17h - 19h</td><td>Aïkido</td></tr>
-        <tr><td>Jeudi</td><td>19h - 20h30</td><td>Jiu-Jitsu Brésilien</td></tr>
-        <tr><td>Vendredi</td><td>18h - 20h</td><td>Karaté</td></tr>
-      </tbody>
-    </table>
-  </section>
+    <section aria-label="Horaires des cours">
+      <h2>Horaires des cours</h2>
+      <table>
+        <thead>
+          <tr><th>Jour</th><th>Horaire</th><th>Discipline</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Lundi</td><td>18h - 20h</td><td>Karaté</td></tr>
+          <tr><td>Mardi</td><td>18h - 19h30</td><td>Judo</td></tr>
+          <tr><td>Mercredi</td><td>17h - 19h</td><td>Aïkido</td></tr>
+          <tr><td>Jeudi</td><td>19h - 20h30</td><td>Jiu-Jitsu Brésilien</td></tr>
+          <tr><td>Vendredi</td><td>18h - 20h</td><td>Karaté</td></tr>
+        </tbody>
+      </table>
+    </section>
 
-  <section class="contact">
-    <h2>Contact</h2>
-    <p>Téléphone : 06 00 00 00 00</p>
-    <p>Adresse : [Adresse du dojo]</p>
-    <div class="map-placeholder">Carte Google Maps (à venir)</div>
-  </section>
+    <section class="contact" aria-label="Contact">
+      <h2>Contact</h2>
+      <p>Téléphone : 06 00 00 00 00</p>
+      <p>Adresse : [Adresse du dojo]</p>
+      <div class="map-placeholder">Carte Google Maps (à venir)</div>
+    </section>
+  </main>
 
   <footer>
     © Kenshin Karate – Tous droits réservés.
   </footer>
 </body>
 </html>
+
