@@ -27,19 +27,22 @@ a:hover {
 
 /* Header / Hero */
 header {
-  background: url('karate.jpg') center center/cover no-repeat;
+  background-image: url('pexels-artempodrez-6253307.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: white;
   text-align: center;
   padding: 0 1rem;
-  position: relative;
-  color: #fff;
 }
 header::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.65);
@@ -181,8 +184,8 @@ th {
   background-color: #1a1a1a;
 }
 
-/* Contact & flyer */
-#contact-flyer {
+/* Contact */
+#contact {
   color: #ddd;
 }
 .contact-info p {
@@ -197,32 +200,6 @@ th {
   box-shadow: 0 0 15px #d4af37aa;
 }
 
-/* Flyer */
-.flyer-text {
-  background: linear-gradient(135deg, #0b0b0b 0%, #1f1f1f 100%);
-  border: 2px solid #d4af37;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #d4af37aa;
-  padding: 2rem;
-  margin-top: 2rem;
-  max-width: 900px;
-  font-family: 'Roboto', sans-serif;
-  color: #ddd;
-}
-.flyer-text h3 {
-  color: #d4af37;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-.flyer-text p {
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-.flyer-text p em {
-  color: #c0392b;
-  font-style: italic;
-}
-
 /* Footer */
 footer {
   text-align: center;
@@ -233,7 +210,7 @@ footer {
   user-select: none;
 }
 
-/* Responsive tweaks */
+/* Responsive */
 @media (max-width: 600px) {
   header h1 {
     font-size: 2.5rem;
